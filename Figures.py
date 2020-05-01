@@ -237,44 +237,6 @@ def draw_axis():
 
 
 def rotate(vec, alpha, beta):
-    M11 = np.cos(np.pi * alpha / 180)
-    M12 = np.sin(np.pi * alpha / 180) * np.cos(np.pi * beta / 180)
-    M13 = np.sin(np.pi * alpha / 180) * np.sin(np.pi * beta / 180)
-    M21 = -np.sin(np.pi * alpha / 180)
-    M22 = np.cos(np.pi * alpha / 180) * np.cos(np.pi * beta / 180)
-    M23 = np.cos(np.pi * alpha / 180) * np.sin(np.pi * beta / 180)
-    M31 = 0
-    M32 = -np.sin(np.pi * beta / 180)
-    M33 = np.cos(np.pi * beta / 180)
-
-    rotated = np.dot(vec, np.array([[M11, M12, M13],
-                                    [M21, M22, M23],
-                                    [M31, M32, M33]]))
-    return rotated
-
-
-def rotate1(vec, alpha, axis):
-    x = axis[0]
-    y = axis[2]
-    z = axis[1]
-
-    M11 = np.cos(np.pi * alpha / 180) * (1 - np.square(x)) + np.square(x)
-    M12 = x * (1 - np.cos(np.pi * alpha / 180)) * y + z * np.sin(np.pi * alpha / 180)
-    M13 = x * (1 - np.cos(np.pi * alpha / 180)) * z - y * np.sin(np.pi * alpha / 180)
-    M21 = x * (1 - np.cos(np.pi * alpha / 180)) * y
-    M22 = np.cos(np.pi * alpha / 180) * (1 - np.square(y)) + np.square(y)
-    M23 = y * (1 - np.cos(np.pi * alpha / 180)) * z + x * np.sin(np.pi * alpha / 180)
-    M31 = x * (1 - np.cos(np.pi * alpha / 180)) * z + y * np.sin(np.pi * alpha / 180)
-    M32 = y * (1 - np.cos(np.pi * alpha / 180)) * z - x * np.sin(np.pi * alpha / 180)
-    M33 = np.cos(np.pi * alpha / 180) * (1 - np.square(z)) + np.square(z)
-
-    rotated = np.dot(vec, np.array([[M11, M12, M13],
-                                    [M21, M22, M23],
-                                    [M31, M32, M33]]))
-    return rotated
-
-
-def rotate2(vec, alpha, beta):
     vec = rotX(vec, beta)
     vec = rotY(vec, alpha)
 

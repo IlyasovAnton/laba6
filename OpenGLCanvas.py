@@ -61,7 +61,7 @@ class OpenGlCanvas(glcanvas.GLCanvas):
         glMatrixMode(GL_MODELVIEW)
         glLoadIdentity()
 
-        self.eye = rotate2(self.eye_start, self.angE1, self.angE2)
+        self.eye = rotate(self.eye_start, self.angE1, self.angE2)
 
         gluLookAt(self.eye[0] * self.distanse, self.eye[1] * self.distanse, self.eye[2] * self.distanse,
                   0.0, 0.0, 0.0,
